@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-  export default function Login() {
+export default function Login() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
@@ -15,7 +15,6 @@ import { useNavigate, Link } from "react-router-dom";
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic Validation
     if (!form.email || !form.password) {
       setError("All fields are required.");
       return;
@@ -26,27 +25,28 @@ import { useNavigate, Link } from "react-router-dom";
       return;
     }
 
-    // Simulate backend login
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-
-      // ✅ Store login status
       sessionStorage.setItem("isLoggedIn", "true");
-
-      // Optional: Save user email
       sessionStorage.setItem("barbUser", JSON.stringify({ email: form.email }));
-
       alert("Login successful!");
-
-      // ✅ Redirect to homepage (not dashboard)
       navigate("/");
     }, 1200);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#4b1e1e] via-[#601c1c] to-[#2f0e0e]">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-[#4b1e1e] via-[#601c1c] to-[#2f0e0e]">
+
+      {/* Background Image */}
+      <img
+        src="/haircuts/login_image.jpg"
+        alt="Barber Cutting Hair"
+        className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"
+      />
+
+      {/* Login Form */}
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md z-10 relative">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login to BarbConnect</h2>
 
         <form className="space-y-4" onSubmit={handleSubmit}>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-  export default function Register() {
+export default function Register() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     fullName: "",
@@ -13,13 +13,13 @@ import { useNavigate, Link } from "react-router-dom";
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setError(""); // clear error on change
+    setError("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Basic validations
+    // Simple form validation
     if (!form.fullName || !form.email || !form.password) {
       setError("All fields are required.");
       return;
@@ -35,23 +35,30 @@ import { useNavigate, Link } from "react-router-dom";
       return;
     }
 
-    // Simulate backend registration
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       alert("Account created successfully!");
       navigate("/dashboard");
-    }, 1200);
+    }, 1000);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#4b1e1e] via-[#601c1c] to-[#2f0e0e]">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-[#4b1e1e] via-[#601c1c] to-[#2f0e0e]">
+      {/* Background image */}
+      <img
+        src="/haircuts/signUp_image.jpg" // ✅ image in public/haircuts/
+        alt="Barber Cutting Hair"
+        className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"
+      />
+
+      {/* Form Card */}
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md z-10 relative">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Create Your BarbConnect Account
         </h2>
 
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">Full Name</label>
             <input
@@ -59,8 +66,8 @@ import { useNavigate, Link } from "react-router-dom";
               name="fullName"
               value={form.fullName}
               onChange={handleChange}
-              placeholder="e.g. Jane Doe"
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#601c1c] focus:outline-none"
+              placeholder="Jane Doe"
             />
           </div>
 
@@ -71,8 +78,8 @@ import { useNavigate, Link } from "react-router-dom";
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="you@example.com"
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#601c1c] focus:outline-none"
+              placeholder="you@example.com"
             />
           </div>
 
@@ -83,8 +90,8 @@ import { useNavigate, Link } from "react-router-dom";
               name="password"
               value={form.password}
               onChange={handleChange}
-              placeholder="Create a password"
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#601c1c] focus:outline-none"
+              placeholder="Create a password"
             />
           </div>
 

@@ -7,6 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import SearchResults from './pages/searchResults'; // ⬅️ NEW
 
 function App() {
   return (
@@ -25,6 +26,16 @@ function App() {
             </Layout>
           }
         />
+
+        <Route
+          path="/search"
+          element={
+            <Layout>
+              <SearchResults /> {/* ⬅️ NEW Search page */}
+            </Layout>
+          }
+        />
+
         <Route
           path="/dashboard"
           element={
