@@ -26,7 +26,7 @@ export default function Navbar() {
             </>
          ) : (
   <>
-  <a href="#features" className="hover:underline">Features</a>
+  <a href="#barbershops" className="hover:underline">Barbershops</a>
   <a href="#location" className="hover:underline">Location</a>
 </>
 
