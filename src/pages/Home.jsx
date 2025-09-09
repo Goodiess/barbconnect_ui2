@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import hero from '../../public/haircuts/mike.jpeg'; // Ensure the path is correct
+import hero from '../../public/haircuts/Mike.jpeg'; // Ensure the path is correct
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
