@@ -152,10 +152,10 @@ export default function Home() {
           ) : (
             <>
               <h1
-                className="text-3xl md:text-5xl font-extrabold mb-4 flex items-center justify-center gap-3"
+                className="text-2xl md:text-5xl font-extrabold mb-4 flex items-center justify-center gap-3"
                 data-aos="fade-down"
               >
-                <span>Welcome to BarbConnect</span>
+                Welcome to BarbConnect
                 <GiRazor className="text-white text-4xl" />
               </h1>
               <p className="text-lg md:text-xl max-w-2xl mx-auto mb-6" data-aos="fade-up">
