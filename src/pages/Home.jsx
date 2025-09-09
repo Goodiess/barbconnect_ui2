@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
+import hero from '../../public/haircuts/mike.jpeg'; // Ensure the path is correct
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -113,7 +114,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative text-center py-40 md:py-60 bg-gradient-to-br from-[#4b1e1e] via-[#601c1c] to-[#2f0e0e] text-white transition-all duration-500 overflow-hidden">
         <img
-          src="/public/haircuts/mike.jpeg"
+          src={hero}
           alt="Barber Cutting Hair"
           className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"
         />
@@ -151,7 +152,7 @@ export default function Home() {
           ) : (
             <>
               <h1
-                className="text-4xl md:text-5xl font-extrabold mb-4 flex items-center justify-center gap-3"
+                className="text-3xl md:text-5xl font-extrabold mb-4 flex items-center justify-center gap-3"
                 data-aos="fade-down"
               >
                 <span>Welcome to BarbConnect</span>
