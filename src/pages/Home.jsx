@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import hero from '../../public/haircuts/Mike.jpeg'; // Ensure the path is correct
+// import hero from '../../public/haircuts/Mike.jpeg'; // Ensure the path is correct
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -63,7 +63,7 @@ export default function Home() {
             components.suburb ||
             components.village ||
             components.town ||
-            components.county ||
+            components.country ||
             components.city ||
             components.state ||
             formatted;
@@ -101,7 +101,7 @@ export default function Home() {
 
   // ✅ Shops array
   const shops = [
-    { name: "Fade Masters", image: hero, rating: 4.8, reviews: 124 },
+    { name: "Fade Masters", image: "/public/haircuts/Mike.jpeg", rating: 4.8, reviews: 124 },
     { name: "Clean Cutz", image: "/haircuts/Mark.png", rating: 4.6, reviews: 98 },
     { name: "Sharp Styles", image: "/haircuts/James.jpeg", rating: 4.9, reviews: 210 },
     { name: "Royal Touch", image: "/haircuts/Raph.jpg", rating: 4.7, reviews: 156 },
