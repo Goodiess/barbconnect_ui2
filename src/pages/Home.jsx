@@ -101,7 +101,7 @@ export default function Home() {
 
   // ✅ Shops array
   const shops = [
-    { name: "Fade Masters", image: "/public/haircuts/joe.jpg", rating: 4.8, reviews: 124 },
+    { src: joe, name: "Fade Masters", image: "/public/haircuts/joe.jpg", rating: 4.8, reviews: 124 },
     { name: "Clean Cutz", image: "/haircuts/Mark.png", rating: 4.6, reviews: 98 },
     { name: "Sharp Styles", image: "/haircuts/James.jpeg", rating: 4.9, reviews: 210 },
     { name: "Royal Touch", image: "/haircuts/Raph.jpg", rating: 4.7, reviews: 156 },
