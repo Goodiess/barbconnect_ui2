@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import hero from '../../public/haircuts/Mike.jpeg'; 
-import joe from '../../haircuts/joe.jpg'; 
+import hero from "../../public/haircuts/Mike.jpeg";
+ 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [role, setRole] = useState(""); // "client" or "barber"
@@ -101,7 +101,7 @@ export default function Home() {
 
   // ✅ Shops array
   const shops = [
-    { src: joe, name: "Fade Masters", image: "/haircuts/Joe.jpg", rating: 4.8, reviews: 124 },
+    { name: "Joe's Barbershop", image: "/haircuts/Joe.jpg", rating: 4.9, reviews: 150 },
     { name: "Clean Cutz", image: "/haircuts/Mark.png", rating: 4.6, reviews: 98 },
     { name: "Sharp Styles", image: "/haircuts/James.jpeg", rating: 4.9, reviews: 210 },
     { name: "Royal Touch", image: "/haircuts/Raph.jpg", rating: 4.7, reviews: 156 },
