@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 import hero from '../../public/haircuts/Mike.jpeg'; 
-import joe from '../haircuts/joe.jpg'; 
+import joe from '../../haircuts/joe.jpg'; 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [role, setRole] = useState(""); // "client" or "barber"
