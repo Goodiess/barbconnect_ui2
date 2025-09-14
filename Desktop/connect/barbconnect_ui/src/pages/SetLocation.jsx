@@ -32,7 +32,7 @@ export default function SetLocation() {
 
     try {
       const res = await axios.put(
-        "http://localhost:5000/api/users/set-location",
+        "https://barbconnect-backend-1.onrender.com/api/barbers/location",
         location,
         {
           headers: {
