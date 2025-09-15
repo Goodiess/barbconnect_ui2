@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ email: "", password: "", role: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -15,7 +15,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.email || !form.password) {
+    if (!form.email || !form.password || !form.role) {
       setError("All fields are required.");
       return;
     }
@@ -28,8 +28,17 @@ export default function Login() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      console.log("Setting sessionStorage:", {
+        isLoggedIn: "true",
+        role: form.role,
+        barbUser: { email: form.email, role: form.role },
+      });
       sessionStorage.setItem("isLoggedIn", "true");
-      sessionStorage.setItem("barbUser", JSON.stringify({ email: form.email }));
+      sessionStorage.setItem("role", form.role); // Set role directly
+      sessionStorage.setItem(
+        "barbUser",
+        JSON.stringify({ email: form.email, role: form.role })
+      );
       alert("Login successful!");
       navigate("/");
     }, 1200);
@@ -37,7 +46,6 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-[#4b1e1e] via-[#601c1c] to-[#2f0e0e]">
-
       {/* Background Image */}
       <img
         src="/haircuts/login_image.jpg"
@@ -47,9 +55,12 @@ export default function Login() {
 
       {/* Login Form */}
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md z-10 relative">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Login to BarbConnect</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          Login to BarbConnect
+        </h2>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
+          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
@@ -62,6 +73,7 @@ export default function Login() {
             />
           </div>
 
+          {/* Password */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Password</label>
             <input
@@ -74,8 +86,24 @@ export default function Login() {
             />
           </div>
 
+          {/* Role */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Role</label>
+            <select
+              name="role"
+              value={form.role}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#601c1c] focus:outline-none"
+            >
+              <option value="">Select your role</option>
+              <option value="barber">Barber</option>
+              <option value="client">Client</option>
+            </select>
+          </div>
+
           {error && <p className="text-red-600 text-sm">{error}</p>}
 
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}
@@ -87,7 +115,10 @@ export default function Login() {
 
         <p className="mt-4 text-center text-sm text-gray-600">
           Don't have an account?{" "}
-          <Link to="/register" className="text-[#601c1c] font-semibold hover:underline">
+          <Link
+            to="/register"
+            className="text-[#601c1c] font-semibold hover:underline"
+          >
             Register here
           </Link>
         </p>

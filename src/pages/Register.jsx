@@ -7,6 +7,7 @@ export default function Register() {
     fullName: "",
     email: "",
     password: "",
+    role: "",
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ export default function Register() {
     e.preventDefault();
 
     // Simple form validation
-    if (!form.fullName || !form.email || !form.password) {
+    if (!form.fullName || !form.email || !form.password || !form.role) {
       setError("All fields are required.");
       return;
     }
@@ -38,8 +39,30 @@ export default function Register() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      console.log("Registering user. Setting sessionStorage:", {
+        isLoggedIn: "true",
+        role: form.role,
+        barbUser: {
+          id: Date.now().toString(),
+          name: form.fullName,
+          email: form.email,
+          role: form.role,
+        },
+      });
+      // Set sessionStorage for immediate login (optional)
+      sessionStorage.setItem("isLoggedIn", "true");
+      sessionStorage.setItem("role", form.role); // Set role directly
+      sessionStorage.setItem(
+        "barbUser",
+        JSON.stringify({
+          id: Date.now().toString(),
+          name: form.fullName,
+          email: form.email,
+          role: form.role,
+        })
+      );
       alert("Account created successfully!");
-      navigate("/dashboard");
+      navigate("/");
     }, 1000);
   };
 
@@ -47,7 +70,7 @@ export default function Register() {
     <div className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-[#4b1e1e] via-[#601c1c] to-[#2f0e0e]">
       {/* Background image */}
       <img
-        src="/haircuts/signUp_image.jpg" // ✅ image in public/haircuts/
+        src="/haircuts/signUp_image.jpg"
         alt="Barber Cutting Hair"
         className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"
       />
@@ -59,6 +82,7 @@ export default function Register() {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Full Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Full Name</label>
             <input
@@ -71,6 +95,7 @@ export default function Register() {
             />
           </div>
 
+          {/* Email */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
@@ -83,6 +108,7 @@ export default function Register() {
             />
           </div>
 
+          {/* Password */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Password</label>
             <input
@@ -95,8 +121,24 @@ export default function Register() {
             />
           </div>
 
+          {/* Role Selection */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Role</label>
+            <select
+              name="role"
+              value={form.role}
+              onChange={handleChange}
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#601c1c] focus:outline-none"
+            >
+              <option value="">Select Role</option>
+              <option value="client">Client</option>
+              <option value="barber">Barber</option>
+            </select>
+          </div>
+
           {error && <p className="text-red-600 text-sm">{error}</p>}
 
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}

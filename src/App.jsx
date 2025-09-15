@@ -7,17 +7,15 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import SearchResults from './pages/searchResults'; // ⬅️ NEW
+import SearchResults from './pages/searchResults';
+import ShopProfile from './pages/ShopProfile';
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Auth routes without layout */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
-        {/* Main routes with shared layout */}
         <Route
           path="/"
           element={
@@ -26,16 +24,22 @@ function App() {
             </Layout>
           }
         />
-
+        <Route
+          path="/shop/:shopId"
+          element={
+            <Layout>
+              <ShopProfile />
+            </Layout>
+          }
+        />
         <Route
           path="/search"
           element={
             <Layout>
-              <SearchResults /> {/* ⬅️ NEW Search page */}
+              <SearchResults />
             </Layout>
           }
         />
-
         <Route
           path="/dashboard"
           element={
