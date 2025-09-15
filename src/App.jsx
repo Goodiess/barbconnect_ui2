@@ -8,7 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import SearchResults from './pages/searchResults';
-import ShopProfile from './pages/ShopProfile';
+import ShopProfile from './pages/shopProfile.jsx';
 
 function App() {
   return (
