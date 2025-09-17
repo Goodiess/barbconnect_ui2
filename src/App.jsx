@@ -9,7 +9,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import SearchResults from './pages/searchResults';
 import ShopProfile from './pages/shopProfile.jsx';
-// import AdminDashboard from './pages/adminDashboard';
+import AdminDashboard from './pages/adminDashboard';
 
 function App() {
   return (
