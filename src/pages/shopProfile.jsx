@@ -49,8 +49,6 @@ export default function ShopProfile() {
         services: [
           { name: "Low Cut", price: "₦1,200" },
           { name: "Dreadlock Maintenance", price: "₦2,500" },
-          { name: "Beard Trim", price: "₦1,000" },
-          { name: "Shave", price: "₦800" },
           { name: "Taper Fade", price: "₦3,000" },
         ],
         barbers: ["Mark", "Tunde", "Ayo", "Solo"],
@@ -82,12 +80,9 @@ export default function ShopProfile() {
         services: [
           { name: "Full Groom", price: "₦4,000" },
           { name: "Hair Tint", price: "₦2,500" },
-          { name: "Skin Fade", price: "₦2,000" },
-          { name: "Beard Trim", price: "₦1,000" },
-          { name: "Shave", price: "₦800" },
           { name: "Taper Fade", price: "₦3,000" },
         ],
-        barbers: ["Raph", "Emeka"],
+        barbers: ["Raph", "Emeka", "Ibrahim"],
         description: "Royal Touch offers a premium grooming experience with a touch of class.",
       },
       {
@@ -100,7 +95,6 @@ export default function ShopProfile() {
         hours: "Mon-Sat: 10 AM - 8 PM",
         services: [
           { name: "Classic Cut", price: "₦3,000" },
-          { name: "Beard Trim", price: "₦1,000" },
           { name: "Shave", price: "₦800" },
           { name: "Taper Fade", price: "₦3,000" },
 
