@@ -9,7 +9,6 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import SearchResults from './pages/searchResults';
 import ShopProfile from './pages/shopProfile.jsx';
-import AdminDashboard from './pages/adminDashboard';
 
 function App() {
   return (
@@ -67,16 +66,6 @@ function App() {
             <Layout>
               <FindBarbers />
             </Layout>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <Layout>
-                <AdminDashboard />
-              </Layout>
-            </ProtectedRoute>
           }
         />
       </Routes>

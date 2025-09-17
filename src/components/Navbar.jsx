@@ -9,7 +9,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4b1e1e] text-white shadow-md px-6 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4b1e1e] text-white shadow-md px-6 py-4 ">
       <div className="flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 text-xl font-bold">
@@ -20,24 +20,22 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-6">
           {user ? (
             <>
-              {user.role === 'admin' && (
-                <Link to="/admin" className="hover:underline">Admin Dashboard</Link>
-              )}
-              <Link to="/dashboard" className="hover:underline">Dashboard</Link>
-              <Link to="/find-barbers" className="hover:underline">Find Barbers</Link>
+              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/find-barbers">Find Barbers</Link>
               <button onClick={logout} className="hover:underline">Logout</button>
             </>
-          ) : (
-            <>
-              <a href="#barbershops" className="hover:underline">Barbershops</a>
-              <a href="#location" className="hover:underline">Location</a>
-            </>
-          )}
+         ) : (
+  <>
+  <a href="#barbershops" className="hover:underline">Barbershops</a>
+  <a href="#location" className="hover:underline">Location</a>
+</>
+
+)}
         </div>
 
         {/* Hamburger (Mobile Only) */}
         <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          <button onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>
@@ -45,16 +43,11 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden mt-4 flex flex-col gap-4 text-center bg-[#4b1e1e] py-4">
+        <div className="md:hidden mt-4 flex flex-col gap-4 text-center">
           {user ? (
             <>
-              {user.role === 'admin' && (
-                <Link to="/admin" onClick={() => setIsOpen(false)} className="hover:underline">
-                  Admin Dashboard
-                </Link>
-              )}
-              <Link to="/dashboard" onClick={() => setIsOpen(false)} className="hover:underline">Dashboard</Link>
-              <Link to="/find-barbers" onClick={() => setIsOpen(false)} className="hover:underline">Find Barbers</Link>
+              <Link to="/dashboard" onClick={() => setIsOpen(false)}>Dashboard</Link>
+              <Link to="/find-barbers" onClick={() => setIsOpen(false)}>Find Barbers</Link>
               <button
                 onClick={() => {
                   logout();
@@ -66,10 +59,10 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <>
-              <a href="#barbershops" onClick={() => setIsOpen(false)} className="hover:underline">Barbershops</a>
-              <a href="#location" onClick={() => setIsOpen(false)} className="hover:underline">Location</a>
-            </>
+         <>
+  <a href="#features" className="hover:underline">Features</a>
+  <a href="#location" className="hover:underline">Location</a>
+</>
           )}
         </div>
       )}
